@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <form class="col-lg-4" method="POST">{% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        <input type="text" class="form-control" name="{{ field.html_name }}"
+                            id="{{ field.id_for_label }}">
+                    </div>
+                    {{ field.errors }}
+                    {% endfor %}
+                    <div class="d-flex justify-content-center flex-column">
+                        <button type="submit" class="btn btn-primary">Зарегистроватся</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
